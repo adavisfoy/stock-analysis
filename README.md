@@ -21,8 +21,9 @@ Before we compare execution times for our original code versus refactored code, 
 - The output of both versions of code is exactly the same.
 - We employed the technique of arrays and nested loops in both versions.
 
+- **Original Code:**
   - The original code utilized only one array for "tickers." We then declared specific variables for "startingPrice" and "endingPrice". We then looped through the data a ticker at a time, which populated the output one row at a time for the current ticker. Because we evaluated each ticker individually, we had to loop through the data 12 times.
-  - Original Code:
+  
 ```ruby
 For i = 0 To 11
     
@@ -69,12 +70,73 @@ For i = 0 To 11
     
 Next i
 ```
+![VBA_Challenge_2017_ORIGINAL](Resources/VBA_Challenge_2017_ORIGINAL.png)
+![VBA_Challenge_2018_ORIGINAL](Resources/VBA_Challenge_2018_ORIGINAL.png)
 
-  - image original 2017
-  - image original 2018
-  - The refactored code expanded utilization of arrays to four arrays: tickers, x, x, and x. As we looped through the data, we stored the data in the four different arrays and then "dumped" all of the output into our "All Stocks Analysis" worksheet at the end.    
+  - **Refactored Code:**
+    - The refactored code expanded utilization of arrays to four arrays: tickers, tickerVolumes, tickerStartingPrices, and tickerEndingPrices. As we looped through the data, we stored the data in the four different arrays and then "dumped" all of the output into our "All Stocks Analysis" worksheet at the end.    
 
-This strategy facilitated a complete analysis of all stocks after only one loop through the data rather than looping through it twelve times (i.e. once per ticker) as we did in the original version.This resulted in greatly improved execution times when we compare the original code vs. the refactored code.  
+    - This strategy facilitated a complete analysis of all stocks after only one loop through the data rather than looping through it twelve times (i.e. once per ticker) as we did in the original version.This resulted in greatly improved execution times when we compare the original code vs. the refactored code. 
+
+```ruby
+''2b) Loop over all the rows in the spreadsheet.
+    
+    For i = 2 To RowCount
+    
+        ticker = tickers(tickerIndex)
+    
+        '3a) Increase volume for current ticker
+        If Cells(i, 1).Value = ticker Then
+        
+            tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
+            
+        End If
+                
+        '3b) Check if the current row is the first row with the selected tickerIndex.
+            'If is, then assign current starting price to the tickerStartingPrices variable
+        'If  Then
+        
+        If Cells(i, 1).Value = ticker And Cells(i - 1, 1).Value <> ticker Then
+        
+            tickerStartingPrices(tickerIndex) = Cells(i, 6).Value
+                    
+        End If
+        
+        '3c) check if the current row is the last row with the selected tickerIndex
+            'If is, assign the current closing price to the tickerEndingPrices variable
+            
+        If Cells(i, 1).Value = ticker And Cells(i + 1, 1).Value <> ticker Then
+        
+            tickerEndingPrices(tickerIndex) = Cells(i, 6).Value
+        
+        End If
+                    
+        '3d Increase the tickerIndex if the next row's ticker doesn't match previous row's ticker.
+        'If  Then
+        
+        If Cells(i, 1).Value = ticker And Cells(i + 1, 1).Value <> ticker Then
+        
+            tickerIndex = tickerIndex + 1
+            
+        End If
+        
+    Next i
+    
+    '4) Loop through your arrays to output the Ticker, Total Daily Volume, and Return.
+    
+    For tickerIndex = 0 To 11
+        
+        Worksheets("All Stocks Analysis").Activate
+        
+        Cells(4 + tickerIndex, 1).Value = tickers(tickerIndex)
+        Cells(4 + tickerIndex, 2).Value = tickerVolumes(tickerIndex)
+        Cells(4 + tickerIndex, 3).Value = (tickerEndingPrices(tickerIndex) / tickerStartingPrices(tickerIndex)) - 1
+        
+    Next tickerIndex
+```
+
+![VBA_Challenge_2017](Resources/VBA_Challenge_2017.png)
+![VBA_Challenge_2018](Resources/VBA_Challenge_2018.png)
 
 ## Project Summary
 
