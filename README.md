@@ -20,7 +20,58 @@ Given that 2018 was not a good year for the stock market, it makes sense that St
 Before we compare execution times for our original code versus refactored code, it is important to note the similarities and differences between them. 
 - The output of both versions of code is exactly the same.
 - We employed the technique of arrays and nested loops in both versions.
+
   - The original code utilized only one array for "tickers." We then declared specific variables for "startingPrice" and "endingPrice". We then looped through the data a ticker at a time, which populated the output one row at a time for the current ticker. Because we evaluated each ticker individually, we had to loop through the data 12 times.
+  - Original Code:
+```ruby
+For i = 0 To 11
+    
+        ticker = tickers(i)
+        totalVolume = 0
+    
+        '5) Loop through rows in the data.
+        
+         Worksheets(yearValue).Activate
+         For j = 2 To RowCount
+                
+        '5a) Find total volume for the current ticker.
+        
+        If Cells(j, 1).Value = ticker Then
+        
+            totalVolume = totalVolume + Cells(j, 8).Value
+            
+        End If
+        
+        '5b) Find starting price for the current ticker.
+        
+         If Cells(j, 1).Value = ticker And Cells(j - 1, 1).Value <> ticker Then
+        
+            startingPrice = Cells(j, 6).Value
+        
+        End If
+        
+        '5c) Find ending price for the current ticker.
+        
+        If Cells(j, 1).Value = ticker And Cells(j + 1, 1).Value <> ticker Then
+        
+            endingPrice = Cells(j, 6).Value
+            
+        End If
+        
+    Next j
+        
+    '6) Output the data for the current ticker.
+            
+    Worksheets("All Stocks Analysis").Activate
+    Cells(4 + i, 1).Value = ticker
+    Cells(4 + i, 2).Value = totalVolume
+    Cells(4 + i, 3).Value = (endingPrice / startingPrice) - 1
+    
+Next i
+```
+
+  - image original 2017
+  - image original 2018
   - The refactored code expanded utilization of arrays to four arrays: tickers, x, x, and x. As we looped through the data, we stored the data in the four different arrays and then "dumped" all of the output into our "All Stocks Analysis" worksheet at the end.    
 
 This strategy facilitated a complete analysis of all stocks after only one loop through the data rather than looping through it twelve times (i.e. once per ticker) as we did in the original version.This resulted in greatly improved execution times when we compare the original code vs. the refactored code.  
