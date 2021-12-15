@@ -17,7 +17,7 @@ Given that 2018 was not a good year for the stock market, it makes sense that St
 
 ### Code Execution Times: Original Code vs. Refactored Code
 
-Before we compare execution times for our original code versus refactored code, it is important to note the similarities between them. 
+Before we compare execution times for our original code versus refactored code, it is important to note some similarities between them: 
 - The output of both versions of code is exactly the same.
 - We employed the technique of arrays and nested loops in both versions.
 
