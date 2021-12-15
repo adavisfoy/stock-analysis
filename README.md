@@ -24,8 +24,8 @@ Before we compare execution times for our original code versus refactored code, 
 - **Original Code:**
   - The original code utilized **only one array for "tickers."** We then declared **specific variables** for "startingPrice" and "endingPrice". We then looped through the data a ticker at a time, which populated the output one row at a time for the current ticker. Because we evaluated each ticker individually, we had to loop through the data 12 times.
   - **Code execution times** for the 2017 analysis and 2018 analysis using the **original code** were **0.87 seconds and 0.86 seconds** respectively.
-  - See the **Original Nested Loop code** below along with screenshots of the code execution times.  
-  
+  - See the Original Nested Loop code below along with screenshots of the code execution times.  
+- **Original Nested Loop:**
 ```ruby
 For i = 0 To 11
     
@@ -72,14 +72,17 @@ For i = 0 To 11
     
 Next i
 ```
+**2017 Code Execution Time: Original Code**
 ![VBA_Challenge_2017_ORIGINAL](Resources/VBA_Challenge_2017_ORIGINAL.png)
+
+**2018 Code Execution Time: Original Code**
 ![VBA_Challenge_2018_ORIGINAL](Resources/VBA_Challenge_2018_ORIGINAL.png)
 
   - **Refactored Code:**
     - The refactored code expanded utilization of arrays to **four arrays: tickers, tickerVolumes, tickerStartingPrices, and tickerEndingPrices.** As we looped through the data, we stored the data in the four different arrays and then "dumped" all of the output into our "All Stocks Analysis" worksheet at the end.    
     - This strategy facilitated a complete analysis of all stocks after only one loop through the data rather than looping through it twelve times (i.e. once per ticker) as we did in the original version. This resulted in **greatly improved execution times** when we compared the original code to the refactored code. 
-    - See the **Refactored Nested Loop code** below along with screenshots of the improved code execution times.
-
+    - See the Refactored Nested Loop code below along with screenshots of the improved code execution times.
+  - **Refactored Nested Loop:**
 ```ruby
 ''2b) Loop over all the rows in the spreadsheet.
     
@@ -136,8 +139,11 @@ Next i
         
     Next tickerIndex
 ```
+**2017 Code Execution Time: Refactored Code**
 
 ![VBA_Challenge_2017](Resources/VBA_Challenge_2017.png)
+
+**2018 Code Execution Time: Refactored Code**
 ![VBA_Challenge_2018](Resources/VBA_Challenge_2018.png)
 
 ## Project Summary
