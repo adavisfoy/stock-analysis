@@ -72,10 +72,13 @@ For i = 0 To 11
     
 Next i
 ```
+
 **2017 Code Execution Time: Original Code**
+
 ![VBA_Challenge_2017_ORIGINAL](Resources/VBA_Challenge_2017_ORIGINAL.png)
 
 **2018 Code Execution Time: Original Code**
+
 ![VBA_Challenge_2018_ORIGINAL](Resources/VBA_Challenge_2018_ORIGINAL.png)
 
   - **Refactored Code:**
@@ -144,6 +147,7 @@ Next i
 ![VBA_Challenge_2017](Resources/VBA_Challenge_2017.png)
 
 **2018 Code Execution Time: Refactored Code**
+
 ![VBA_Challenge_2018](Resources/VBA_Challenge_2018.png)
 
 ## Project Summary
