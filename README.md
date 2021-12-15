@@ -75,9 +75,9 @@ Next i
 ![VBA_Challenge_2017_ORIGINAL](Resources/VBA_Challenge_2017_ORIGINAL.png)
 ![VBA_Challenge_2018_ORIGINAL](Resources/VBA_Challenge_2018_ORIGINAL.png)
 
-  - **Refactored Code Nested Loop:**
-    - The refactored code expanded utilization of arrays to four arrays: tickers, tickerVolumes, tickerStartingPrices, and tickerEndingPrices. As we looped through the data, we stored the data in the four different arrays and then "dumped" all of the output into our "All Stocks Analysis" worksheet at the end.    
-    - This strategy facilitated a complete analysis of all stocks after only one loop through the data rather than looping through it twelve times (i.e. once per ticker) as we did in the original version.This resulted in greatly improved execution times when we compare the original code vs. the refactored code. 
+  - **Refactored Code:**
+    - The refactored code expanded utilization of arrays to **four arrays: tickers, tickerVolumes, tickerStartingPrices, and tickerEndingPrices.** As we looped through the data, we stored the data in the four different arrays and then "dumped" all of the output into our "All Stocks Analysis" worksheet at the end.    
+    - This strategy facilitated a complete analysis of all stocks after only one loop through the data rather than looping through it twelve times (i.e. once per ticker) as we did in the original version. This resulted in **greatly improved execution times** when we compare the original code to the refactored code. 
     - See the **Refactored Nested Loop code** below along with screenshots of the improved code execution times.
 
 ```ruby
@@ -148,6 +148,7 @@ Next i
   - The refactored code is easier for others to read and understand if comments and white space are utilized, including the appropriate indentation (e.g. loops). Therefore, it may be easier for future developers to comprehend the code, maintain it, and make alterations in a timely manner. 
 - **Disadvantages of refactoring code:** 
   - As I learned from this challenging effort, it is very time consuming. That being said, it may be worth it giving some of the time-saving advantages noted above.
-  - For me, it was difficult to refactor already existing code because it was hard to think "outside the box" with the code in front of me. This may improve as I get more comfortable with programming languages.  
+  - If mistakes from the original code are missed in the refactored code, the new code will inherit them. 
+  - For me, it was difficult to refactor already existing code because it was hard to think "outside the box" with the code in front of me. (It also may be due to how new all of these concepts are for me.) This should improve as I get more comfortable with fundamental programming concepts.   
 - **How do these pros and cons apply our refactoring of the original VBA script?**
-  - By refactoring our code, the code execution times were greatly improved. The code execution time for the 2017 analysis improved from 0.87 seconds to 0.xx seconds. The code execution time for the 2018 analysis improved from 0.86 seconds to 0.xx seconds. 
+  - By refactoring our code, the code execution times were greatly improved. The code execution time for the 2017 analysis improved from 0.87 seconds to 0.14 seconds. The code execution time for the 2018 analysis improved from 0.86 seconds to 0.13 seconds. Given this information, I am confident that the refactored code would be able to handle a larger data set for Steve's analysis.  
