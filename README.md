@@ -77,7 +77,7 @@ Next i
 
   - **Refactored Code:**
     - The refactored code expanded utilization of arrays to **four arrays: tickers, tickerVolumes, tickerStartingPrices, and tickerEndingPrices.** As we looped through the data, we stored the data in the four different arrays and then "dumped" all of the output into our "All Stocks Analysis" worksheet at the end.    
-    - This strategy facilitated a complete analysis of all stocks after only one loop through the data rather than looping through it twelve times (i.e. once per ticker) as we did in the original version. This resulted in **greatly improved execution times** when we compare the original code to the refactored code. 
+    - This strategy facilitated a complete analysis of all stocks after only one loop through the data rather than looping through it twelve times (i.e. once per ticker) as we did in the original version. This resulted in **greatly improved execution times** when we compared the original code to the refactored code. 
     - See the **Refactored Nested Loop code** below along with screenshots of the improved code execution times.
 
 ```ruby
